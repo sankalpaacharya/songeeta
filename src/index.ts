@@ -7,7 +7,6 @@ class User{
         this.dob = dob
         this.country = country
     }
-
 }
 
 class Member extends User{
@@ -22,7 +21,9 @@ class Member extends User{
     
 }
  
+class Auth{
 
+}
 /*
 ----basic WORKFLOW for us----
 I'm gonna make a login,signup, auth middleware class and will work accordingly 
