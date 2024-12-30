@@ -1,9 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "dev":"npx tsc -w"
+    "dev": "tsx watch --inspect ./src/index.ts"
   },
   "devDependencies": {
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }
 }
