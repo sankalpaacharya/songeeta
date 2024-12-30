@@ -1,0 +1,1 @@
+export type Genre = "Pop" | "Rock" | "Lofi" | "Rap" | "Hip-hop" 

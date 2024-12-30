@@ -1,3 +1,4 @@
+import {Genre} from "@songeeta/types/music"
 
 class User{
     constructor(protected name:string,protected email:string, protected dob:Date,protected country:string){
