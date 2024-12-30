@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev":"npx tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
