@@ -1,23 +1,26 @@
-import { JWT_TOKEN, USERNAME, PASSWORD } from "@/data/constants";
+import { JWT_TOKEN, USERNAME, PASSWORD, SuccessAuthResponse, ErrorAuthResponse } from "@/data/constants";
 import { Genre } from "@songeeta/types/music";
-import { AuthenticationFailed } from "@/helpers/erros";
+import { AuthenticationFailed } from "@/helpers/erros"; 
+import { AuthResponse } from "@songeeta/types/user";
 
+// to be fix: throw error and the AuthReponse Object as well this is only throwing an authreponse object
 class Auth {
-  login(username: string, password: string): string | undefined {
+  async login(username: string, password: string): Promise<AuthResponse>{
     try {
       if (username === USERNAME && password === PASSWORD) {
-        return JWT_TOKEN;
+        // simulate getting data from the database and get the data 
+        return SuccessAuthResponse
       } else {
-        throw new AuthenticationFailed("Incorrect email or password");
+        return ErrorAuthResponse
       }
-    } catch (error) {}
+    } catch (error) {return ErrorAuthResponse}
   }
-  singup(
+  async singup(
     username: string,
     password: string,
     email: string,
     genres: Genre[],
-  ): string {
+  ): Promise<string> {
     // apply validation like email, password length and other stuff
     return JWT_TOKEN;
   }

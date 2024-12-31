@@ -1,4 +1,6 @@
 import { Genre } from "@songeeta/types/music";
+import { USER_SANKU } from "./data/constants";
+import { TUser } from "./types/user";
 
 class User {
   constructor(
@@ -14,12 +16,13 @@ class User {
   }
 }
 
-class Member extends User {
+export class Member extends User {
   constructor(
     protected name: string,
     protected email: string,
     protected dob: Date,
     protected country: string,
+    protected profile: string,
     protected genres: Genre[],
   ) {
     super(name, email, dob, country);
@@ -31,6 +34,8 @@ class Member extends User {
   }
 }
 
+
+
 /*
 ----basic WORKFLOW for us----
 I'm gonna make a login,signup, auth middleware class and will work accordingly 
@@ -40,11 +45,5 @@ listen music if one is play don't allow other to play
 and when user is listening music keep collecting the information and later we can use
 
 */
-
-const sankalpa = new Member(
-  "sankalpa",
-  "sankalpa@gmail.com",
-  new Date(2024 - 11 - 22),
-  "nepal",
-  ["Rap"],
-);
+const sanku = new Member(USER_SANKU.name,USER_SANKU.email,USER_SANKU.dob,USER_SANKU.country,USER_SANKU.profile,USER_SANKU.genres)
+console.log(sanku)

@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "tsx watch --inspect ./src/index.ts",
+    "dev": "tsx watch --inspect ./src/app.ts",
     "format": "prettier ./src --write"
   },
   "devDependencies": {
