@@ -1,1 +1,1 @@
-export type Genre = "Pop" | "Rock" | "Lofi" | "Rap" | "Hip-hop" 
+export type Genre = "Pop" | "Rock" | "Lofi" | "Rap" | "Hip-hop";
