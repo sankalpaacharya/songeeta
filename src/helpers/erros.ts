@@ -1,13 +1,12 @@
 import { AuthResponse } from "@songeeta/types/user";
 
-function authErrorGenerate(msg:string):AuthResponse{
-    return {
-        data:undefined,
-        error:{
-            message:msg
-        }
-
-}
+function authErrorGenerate(msg: string): AuthResponse {
+  return {
+    data: undefined,
+    error: {
+      message: msg,
+    },
+  };
 }
 
 export class AuthenticationFailed extends Error {

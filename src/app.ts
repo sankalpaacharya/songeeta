@@ -34,8 +34,6 @@ export class Member extends User {
   }
 }
 
-
-
 /*
 ----basic WORKFLOW for us----
 I'm gonna make a login,signup, auth middleware class and will work accordingly 
@@ -45,5 +43,12 @@ listen music if one is play don't allow other to play
 and when user is listening music keep collecting the information and later we can use
 
 */
-const sanku = new Member(USER_SANKU.name,USER_SANKU.email,USER_SANKU.dob,USER_SANKU.country,USER_SANKU.profile,USER_SANKU.genres)
-console.log(sanku)
+const sanku = new Member(
+  USER_SANKU.name,
+  USER_SANKU.email,
+  USER_SANKU.dob,
+  USER_SANKU.country,
+  USER_SANKU.profile,
+  USER_SANKU.genres,
+);
+console.log(sanku);
