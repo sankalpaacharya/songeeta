@@ -1,5 +1,5 @@
 # SONGEETA
-TypeScript project without a UI, designed for learning TypeScript, OOP, design patterns, and clean code.
+Spotify Simulation, TypeScript project without a UI, designed for learning TypeScript, OOP, design patterns, and clean code.
 
 ## Things to do before committing code 
 ```bash
