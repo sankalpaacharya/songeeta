@@ -3,30 +3,25 @@ import { USER_SANKU } from "./data/constants";
 import { TUser } from "./types/user";
 
 class User {
-  constructor(
-    protected name: string,
-    protected email: string,
-    protected dob: Date,
-    protected country: string,
-  ) {
-    this.name = name;
-    this.email = email;
-    this.dob = dob;
-    this.country = country;
+  protected name: string;
+  protected email: string;
+  protected dob: Date;
+  protected country: string;
+
+  constructor(user: Omit<TUser, Genre>) {
+    this.name = user.name;
+    this.email = user.email;
+    this.dob = user.dob;
+    this.country = user.country;
   }
 }
 
 export class Member extends User {
-  constructor(
-    protected name: string,
-    protected email: string,
-    protected dob: Date,
-    protected country: string,
-    protected profile: string,
-    protected genres: Genre[],
-  ) {
-    super(name, email, dob, country);
-    this.genres = genres;
+  genres: Genre[];
+
+  constructor(user: TUser) {
+    super(user);
+    this.genres = user.genres;
   }
 
   displayInformation(member: Member) {
@@ -44,13 +39,5 @@ and when user is listening music keep collecting the information and later we ca
 
 */
 
-
-const sanku = new Member(
-  USER_SANKU.name,
-  USER_SANKU.email,
-  USER_SANKU.dob,
-  USER_SANKU.country,
-  USER_SANKU.profile,
-  USER_SANKU.genres,
-);
+const sanku = new Member(USER_SANKU);
 console.log(sanku);
