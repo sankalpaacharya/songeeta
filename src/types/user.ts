@@ -8,7 +8,7 @@ export type TUser = {
   country: string;
   profile: string;
   genres: Genre[];
-  playlist?:Playlist[] | []
+  playlist?: Playlist[] | [];
 };
 
 export type AuthResponse = {

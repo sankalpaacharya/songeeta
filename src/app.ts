@@ -19,30 +19,29 @@ class User {
 
 export class Member extends User {
   genres: Genre[];
-  playlist: Playlist[] 
+  playlist: Playlist[];
 
   constructor(user: TUser) {
     super(user);
     this.genres = user.genres;
-    this.playlist = user.playlist || []
+    this.playlist = user.playlist || [];
   }
 
   displayInformation(member: Member) {
     console.log(`Name: ${member.name} \nEmail:${member.email}`);
   }
 
-  makePlaylist(playlist:Playlist){
-    this.playlist.push(playlist)
-  }
-  
-  addSongToPlaylist(song:Song,playListId:string){
-     this.playlist.forEach((list)=>{
-      if(list.id===playListId){
-       list.songs.push(song) 
-      }
-     }) 
+  makePlaylist(playlist: Playlist) {
+    this.playlist.push(playlist);
   }
 
+  addSongToPlaylist(song: Song, playListId: string) {
+    this.playlist.forEach((list) => {
+      if (list.id === playListId) {
+        list.songs.push(song);
+      }
+    });
+  }
 }
 
 /*

@@ -21,15 +21,14 @@ export const SuccessAuthResponse: AuthResponse = {
   },
   error: undefined,
 };
-export const MOCKINGBIRD:Song = {
-  id:"eminem-12",
-  name:"Eminem- Mocking Bird",
+export const MOCKINGBIRD: Song = {
+  id: "eminem-12",
+  name: "Eminem- Mocking Bird",
   duration: 120,
-  artist:"Eminem",
-  language:"English",
-  genre:["Rap"]
-
-}
+  artist: "Eminem",
+  language: "English",
+  genre: ["Rap"],
+};
 export const ErrorAuthResponse: AuthResponse = {
   data: undefined,
   error: {
