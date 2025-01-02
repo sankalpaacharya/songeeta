@@ -1,7 +1,7 @@
-import { PlaylistType, Song, Language, Genre} from "@songeeta/types/music";
+import { PlaylistType, Song, Language, Genre } from "@songeeta/types/music";
 
 export class Playlist {
-   id: string;
+  id: string;
   private name: string;
   private numberOfSongs: number;
   private tags: Genre | Language[];
@@ -19,18 +19,15 @@ export class Playlist {
     console.log(this.songs);
   }
 
-  addSong(newSong:Song){
+  addSong(newSong: Song) {
     this.songs.push(newSong);
   }
 
-  removeSong(songId:string){
-    this.songs = this.songs.filter(song=>song.id!=songId)
+  removeSong(songId: string) {
+    this.songs = this.songs.filter((song) => song.id != songId);
   }
- // display more better information by formatting string
-  displayInformation(){
-    console.log(this.numberOfSongs, this.tags)
+  // display more better information by formatting string
+  displayInformation() {
+    console.log(this.numberOfSongs, this.tags);
   }
-
-
-
 }

@@ -1,4 +1,4 @@
-import {  Song } from "@songeeta/types/music";
+import { Song } from "@songeeta/types/music";
 import { Playlist } from "./playlist";
 
 /* 
@@ -10,30 +10,64 @@ if it's single song load to the playlist and when user hits nextSong select the 
 multiple genre, based on that genre select one random music 
 */
 
-// for musicplayer only accepts the playlist make it to accept the single Song as well
-
- export class MusicPlayer {
-
-  private songsQueue: Song[] = []; 
-  private indexOfCurrentSong: number = 0
+export class MusicPlayer {
+  private songsQueue: Song[] = [];
+  private indexOfCurrentSong: number = 0;
+  timeoutId: number | undefined; //we need to store  timeoutId to  clear it for pause() method
 
   loadSongs(playList: Playlist) {
-    this.songsQueue = [...this.songsQueue, ...playList.songs];  
-   }
+    this.songsQueue = [...this.songsQueue, ...playList.songs];
+  }
+
+  addSingleSong(song : Song){
+    this.songsQueue.push(song);
+  }
 
   play() {
-    const currentSong = this.songsQueue[this.indexOfCurrentSong]
-    console.log(`Playing ${currentSong.name} by ${currentSong.artist}`)
+    const currentSong = this.songsQueue[this.indexOfCurrentSong];
+    console.log(`Playing ${currentSong.name} by ${currentSong.artist}`);
+
+    this.timeoutId = setTimeout(() => {
+      this.playNext();
+    }, this.songsQueue[this.indexOfCurrentSong].duration*1000);
+    //*1000 is done to convert to seconds as setTimeout takes milliseconds as parameter 
+    
+    //dekh bro current song will be played for this.duration  and immediately next song will be played and this continues as playNext also calls this.play()
   }
 
-  playNext(){
-    if(this.indexOfCurrentSong>this.songsQueue.length){
-      this.indexOfCurrentSong = 0
+  playNext() {
+    if (this.songsQueue.length === 0) {
+      console.log("No songs in the queue.");
+      return;
     }
-    else{
-    this.indexOfCurrentSong+=1
-    }
-    this.play()
+    this.indexOfCurrentSong =
+      (this.indexOfCurrentSong + 1) % this.songsQueue.length;
+    this.play();
   }
 
+  pause() {
+    console.log(`Paused ${this.songsQueue[this.indexOfCurrentSong].name} by ${this.songsQueue[this.indexOfCurrentSong].artist}`);
+    if(!this.timeoutId){
+      console.log("No song is playing")
+      return;
+    }
+    clearTimeout(this.timeoutId);
+  }
+
+  listCurrentQueue() {
+    if (this.songsQueue.length === 0) {
+      console.log("No songs in the queue.");
+      return;
+    }
+    console.log("-----Your Queue-----");
+    for (let i = 0; i < this.songsQueue.length; i++) {
+      const song = this.songsQueue[i];
+      if (this.indexOfCurrentSong === i) {
+        console.log(`${song.name} by ${song.artist} <<<`);
+      } else {
+        console.log(`${song.name} by ${song.artist}`);
+      }
+    }
+    console.log("--------------------");
+  }
 }

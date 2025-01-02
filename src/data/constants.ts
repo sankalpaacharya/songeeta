@@ -21,17 +21,39 @@ export const SuccessAuthResponse: AuthResponse = {
   },
   error: undefined,
 };
-export const MOCKINGBIRD: Song = {
-  id: "eminem-12",
-  name: "Eminem- Mocking Bird",
-  duration: 120,
-  artist: "Eminem",
-  language: "English",
-  genre: ["Rap"],
-};
+
 export const ErrorAuthResponse: AuthResponse = {
   data: undefined,
   error: {
     message: "invalid password",
   },
+};
+
+export const MOCKINGBIRD: Song = {
+  id: "eminem-12",
+  name: "Eminem- Mocking Bird",
+  duration: 5,
+  artist: "Eminem",
+  language: "English",
+  genre: ["Rap"],
+};
+
+//duration is intentionally kept short in order to test things
+
+export const BABYDONTHURTME : Song = {
+  id: "2",
+  name: "What is Love",
+  duration: 10,
+  artist: "Coi Leray",
+  language: "English",
+  genre: ["Pop"],
+};
+
+export const NOTAFRAID : Song = {
+  id: "3",
+  name: "Not Afraid",
+  duration: 7,
+  artist: "Eminem",
+  language: "English",
+  genre: ["Rap", "Hip-hop"],
 };

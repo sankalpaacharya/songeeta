@@ -1,5 +1,5 @@
 import { Genre, PlaylistType, Song } from "@songeeta/types/music";
-import { MOCKINGBIRD, USER_SANKU } from "./data/constants";
+import { MOCKINGBIRD, USER_SANKU,BABYDONTHURTME, NOTAFRAID } from "./data/constants";
 import { TUser } from "./types/user";
 import { MusicPlayer } from "./helpers/player";
 
@@ -59,8 +59,10 @@ console.log(sanku);
 
 const player = new MusicPlayer();
 
-// player.addSong(MOCKINGBIRD);
-// player.addSong(MOCKINGBIRD);
-// player.listSongs();
-// player.playSong();
-// player.nextSong();
+player.addSingleSong(MOCKINGBIRD);
+player.addSingleSong(BABYDONTHURTME);
+player.addSingleSong(NOTAFRAID);
+player.listCurrentQueue();
+player.play();
+// player.playNext();
+setTimeout(()=>{player.pause()},7000) //simulated pause functionality after 7 seconds of playing
