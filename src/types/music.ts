@@ -10,10 +10,12 @@ export type Song = {
   artist: string;
 };
 
-export type Playlist = {
-  id: "plist1";
+export type PlaylistType = {
+  id: string;
   name: string;
   numberOfSongs: number;
   tags: Genre | Language[];
   songs: Song[];
 };
+
+export type MusicPlayer = {};

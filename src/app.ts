@@ -1,4 +1,4 @@
-import { Genre, Playlist, Song } from "@songeeta/types/music";
+import { Genre, PlaylistType, Song } from "@songeeta/types/music";
 import { MOCKINGBIRD, USER_SANKU } from "./data/constants";
 import { TUser } from "./types/user";
 import { MusicPlayer } from "./helpers/player";
@@ -19,7 +19,7 @@ class User {
 
 export class Member extends User {
   genres: Genre[];
-  playlist: Playlist[];
+  playlist: PlaylistType[];
 
   constructor(user: TUser) {
     super(user);
@@ -31,7 +31,7 @@ export class Member extends User {
     console.log(`Name: ${member.name} \nEmail:${member.email}`);
   }
 
-  makePlaylist(playlist: Playlist) {
+  makePlaylist(playlist: PlaylistType) {
     this.playlist.push(playlist);
   }
 
