@@ -7,19 +7,17 @@ export class MusicPlayer {
   playSong() {
     const cuurrSong = this.playlist[this.currentIndex];
     console.log(
-      `Our beloved Songeeta started Playing: ${cuurrSong.title} by ${cuurrSong.author || "Unknown"} [${cuurrSong.duration} seconds]`,
+      `Our beloved Songeeta started Playing: ${cuurrSong.name} by ${cuurrSong.artist || "Unknown"} [${cuurrSong.duration} seconds]`,
     );
-    //not sure how to play the obtained song .....
   }
 
   stopSong() {
     console.log("Our beloved Songeeta stopped playing.");
-    //not sure how to stop playing the song .....
   }
 
   addSong(song: Song) {
     this.playlist.push(song);
-    console.log(`Added: ${song.title}`);
+    console.log(`Added: ${song.name}`);
   }
 
   nextSong() {
@@ -29,12 +27,12 @@ export class MusicPlayer {
   }
 
   listSongs() {
-    console.log("Playlist:");
     this.playlist.forEach((song, index) => {
       const marker = index === this.currentIndex ? ">>" : "  ";
       console.log(
-        `${marker} ${index + 1}. ${song.title} [${song.genre}, ${song.language}]`,
+        `${marker} ${index + 1}. ${song.name} [${song.genre}, ${song.language}]`,
       );
     });
   }
+
 }

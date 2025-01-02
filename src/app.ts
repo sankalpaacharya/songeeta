@@ -1,5 +1,5 @@
-import { Genre } from "@songeeta/types/music";
-import { USER_SANKU } from "./data/constants";
+import { Genre, Playlist, Song } from "@songeeta/types/music";
+import { MOCKINGBIRD, USER_SANKU } from "./data/constants";
 import { TUser } from "./types/user";
 import { MusicPlayer } from "./helpers/player";
 
@@ -19,15 +19,30 @@ class User {
 
 export class Member extends User {
   genres: Genre[];
+  playlist: Playlist[] 
 
   constructor(user: TUser) {
     super(user);
     this.genres = user.genres;
+    this.playlist = user.playlist || []
   }
 
   displayInformation(member: Member) {
     console.log(`Name: ${member.name} \nEmail:${member.email}`);
   }
+
+  makePlaylist(playlist:Playlist){
+    this.playlist.push(playlist)
+  }
+  
+  addSongToPlaylist(song:Song,playListId:string){
+     this.playlist.forEach((list)=>{
+      if(list.id===playListId){
+       list.songs.push(song) 
+      }
+     }) 
+  }
+
 }
 
 /*
@@ -43,25 +58,10 @@ and when user is listening music keep collecting the information and later we ca
 const sanku = new Member(USER_SANKU);
 console.log(sanku);
 
-/*
-below code is for testing purpose
-because i was not sure how to store all the songs and play them without using any libraries
-*/
-
 const player = new MusicPlayer();
-player.addSong({
-  title: "Song 1",
-  duration: 120,
-  genre: "Rock",
-  language: "English",
-  author: "Nishit Bhai",
-});
-player.addSong({
-  title: "Song 2",
-  duration: 150,
-  genre: "Lofi",
-  language: "Hindi",
-});
-player.listSongs();
-player.playSong();
-player.nextSong();
+
+// player.addSong(MOCKINGBIRD);
+// player.addSong(MOCKINGBIRD);
+// player.listSongs();
+// player.playSong();
+// player.nextSong();

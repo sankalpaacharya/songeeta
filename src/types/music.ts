@@ -2,9 +2,19 @@ export type Genre = "Pop" | "Rock" | "Lofi" | "Rap" | "Hip-hop";
 export type Language = "Hindi" | "English" | "Nepali" | "Punjabi" | "Gujarati";
 
 export type Song = {
-  title: string;
-  duration: number;
-  genre: Genre;
+  id:string
+  name: string;
+  duration: number; // in seconds
+  genre: Genre[];
   language: Language;
-  author?: string; //Nishit bhai "?" matlab author hai to thik nahi hai fir bhi chalega
+  artist: string; 
 };
+
+export type Playlist= {
+  id:"plist1"
+  name:string
+  numberOfSongs: number
+  tags:Genre|Language[]
+  songs:Song[]
+
+}

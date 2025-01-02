@@ -1,4 +1,4 @@
-import { Genre } from "./music";
+import { Genre, Playlist } from "./music";
 
 //  we have user class and i can't name this as User type so either change the name or find something better for now im keeping it as TUser
 export type TUser = {
@@ -8,6 +8,7 @@ export type TUser = {
   country: string;
   profile: string;
   genres: Genre[];
+  playlist?:Playlist[] | []
 };
 
 export type AuthResponse = {
