@@ -2,10 +2,10 @@ import { PlaylistType, Song, Language, Genre } from "@songeeta/types/music";
 
 export class Playlist {
   id: string;
-  private name: string;
-  private numberOfSongs: number;
-  private tags: Genre | Language[];
-  public songs: Song[];
+  name: string;
+  numberOfSongs: number;
+  tags: Genre | Language[];
+  songs: Song[];
 
   constructor(playlist: PlaylistType) {
     this.id = playlist.id;
@@ -20,10 +20,12 @@ export class Playlist {
   }
 
   addSong(newSong: Song) {
+    this.numberOfSongs++;
     this.songs.push(newSong);
   }
 
   removeSong(songId: string) {
+    this.numberOfSongs--;
     this.songs = this.songs.filter((song) => song.id != songId);
   }
   // display more better information by formatting string

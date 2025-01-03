@@ -1,5 +1,4 @@
-import { Song } from "@songeeta/types/music";
-import { Playlist } from "./playlist";
+import { PlaylistType, Song } from "@songeeta/types/music";
 
 /* 
 How music player will work ?
@@ -15,11 +14,11 @@ export class MusicPlayer {
   private indexOfCurrentSong: number = 0;
   timeoutId: number | undefined; //we need to store  timeoutId to  clear it for pause() method
 
-  loadSongs(playList: Playlist) {
+  loadSongs(playList: PlaylistType) {
     this.songsQueue = [...this.songsQueue, ...playList.songs];
   }
 
-  addSingleSong(song : Song){
+  addSingleSong(song: Song) {
     this.songsQueue.push(song);
   }
 
@@ -29,9 +28,9 @@ export class MusicPlayer {
 
     this.timeoutId = setTimeout(() => {
       this.playNext();
-    }, this.songsQueue[this.indexOfCurrentSong].duration*1000);
-    //*1000 is done to convert to seconds as setTimeout takes milliseconds as parameter 
-    
+    }, this.songsQueue[this.indexOfCurrentSong].duration * 1000);
+    //*1000 is done to convert to seconds as setTimeout takes milliseconds as parameter
+
     //dekh bro current song will be played for this.duration  and immediately next song will be played and this continues as playNext also calls this.play()
   }
 
@@ -46,9 +45,11 @@ export class MusicPlayer {
   }
 
   pause() {
-    console.log(`Paused ${this.songsQueue[this.indexOfCurrentSong].name} by ${this.songsQueue[this.indexOfCurrentSong].artist}`);
-    if(!this.timeoutId){
-      console.log("No song is playing")
+    console.log(
+      `Paused ${this.songsQueue[this.indexOfCurrentSong].name} by ${this.songsQueue[this.indexOfCurrentSong].artist}`,
+    );
+    if (!this.timeoutId) {
+      console.log("No song is playing");
       return;
     }
     clearTimeout(this.timeoutId);

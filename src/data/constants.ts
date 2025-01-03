@@ -40,7 +40,7 @@ export const MOCKINGBIRD: Song = {
 
 //duration is intentionally kept short in order to test things
 
-export const BABYDONTHURTME : Song = {
+export const BABYDONTHURTME: Song = {
   id: "2",
   name: "What is Love",
   duration: 10,
@@ -49,7 +49,7 @@ export const BABYDONTHURTME : Song = {
   genre: ["Pop"],
 };
 
-export const NOTAFRAID : Song = {
+export const NOTAFRAID: Song = {
   id: "3",
   name: "Not Afraid",
   duration: 7,
