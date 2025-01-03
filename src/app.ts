@@ -1,7 +1,13 @@
 import { Genre, PlaylistType, Song } from "@songeeta/types/music";
-import { MOCKINGBIRD, USER_SANKU } from "./data/constants";
+import {
+  MOCKINGBIRD,
+  USER_SANKU,
+  BABYDONTHURTME,
+  NOTAFRAID,
+} from "./data/constants";
 import { TUser } from "./types/user";
 import { MusicPlayer } from "./helpers/player";
+import { Playlist } from "./helpers/playlist";
 
 class User {
   protected name: string;
@@ -19,7 +25,7 @@ class User {
 
 export class Member extends User {
   genres: Genre[];
-  playlist: PlaylistType[];
+  playlist: Playlist[];
 
   constructor(user: TUser) {
     super(user);
@@ -31,16 +37,19 @@ export class Member extends User {
     console.log(`Name: ${member.name} \nEmail:${member.email}`);
   }
 
-  makePlaylist(playlist: PlaylistType) {
+  makePlaylist(playlist: Playlist) {
     this.playlist.push(playlist);
   }
 
   addSongToPlaylist(song: Song, playListId: string) {
-    this.playlist.forEach((list) => {
+    for (const list of this.playlist) {
       if (list.id === playListId) {
         list.songs.push(song);
+        console.log("Song added to playlist");
+        return;
       }
-    });
+    }
+    console.log("No Playlist found with such ID");
   }
 }
 
@@ -59,8 +68,23 @@ console.log(sanku);
 
 const player = new MusicPlayer();
 
-// player.addSong(MOCKINGBIRD);
-// player.addSong(MOCKINGBIRD);
-// player.listSongs();
-// player.playSong();
-// player.nextSong();
+player.addSingleSong(BABYDONTHURTME);
+player.listCurrentQueue();
+player.play();
+// player.playNext();
+setTimeout(() => {
+  player.pause();
+}, 7000); //simulated pause functionality after 7 seconds of playing
+
+const myPlaylist = new Playlist({
+  id: "1",
+  name: "Feel Good",
+  numberOfSongs: 0,
+  tags: "Rap",
+  songs: [MOCKINGBIRD],
+});
+
+sanku.makePlaylist(myPlaylist);
+sanku.addSongToPlaylist(NOTAFRAID, "1");
+player.loadSongs(myPlaylist);
+player.listCurrentQueue();
